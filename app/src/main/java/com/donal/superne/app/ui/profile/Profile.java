@@ -15,4 +15,8 @@ public class Profile extends BaseActivity {
         setContentView(R.layout.activity_profile);
     }
 
+    @Override
+    protected void initNavgation() {
+        setTvTitle(R.string.profile);
+    }
 }

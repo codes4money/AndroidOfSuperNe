@@ -15,4 +15,8 @@ public class Discover extends BaseActivity {
         setContentView(R.layout.activity_discover);
     }
 
+    @Override
+    protected void initNavgation() {
+        setTvTitle(R.string.discover);
+    }
 }

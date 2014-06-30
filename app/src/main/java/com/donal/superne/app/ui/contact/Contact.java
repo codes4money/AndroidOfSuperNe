@@ -14,4 +14,8 @@ public class Contact extends BaseActivity {
         setContentView(R.layout.activity_contact);
     }
 
+    @Override
+    protected void initNavgation() {
+        setTvTitle(R.string.contact);
+    }
 }

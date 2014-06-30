@@ -15,4 +15,9 @@ public class Conversation extends BaseActivity {
         setContentView(R.layout.activity_conversation);
     }
 
+    @Override
+    protected void initNavgation() {
+        setTvTitle(R.string.conversation);
+
+    }
 }
