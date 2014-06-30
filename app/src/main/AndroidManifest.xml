@@ -11,11 +11,6 @@
             android:name="com.donal.superne.app.ui.tabbar.Tabbar"
             android:label="@string/title_activity_tabbar"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.conversation.Conversation"
@@ -36,6 +31,20 @@
         <activity
             android:name="com.donal.superne.app.ui.login.Login"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="com.donal.superne.app.ui.Welcome"
+            android:label="@string/title_activity_welcome"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.donal.superne.app.ui.register.Register"
+            android:label="@string/title_activity_register" >
         </activity>
     </application>
 

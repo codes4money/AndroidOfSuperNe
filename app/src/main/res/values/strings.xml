@@ -22,5 +22,18 @@
     <string name="system_not">Notification</string>
     <string name="logout">Logout</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="title_activity_register">Register</string>
 
+    <!--登录页面  -->
+    <string name="input_accountmobile">mobile</string>
+    <string name="input_password">password</string>
+    <string name="remember_password">remember password</string>
+    <string name="login">login</string>
+    <string name="init">init...</string>
+    <string name="loading">loading...</string>
+    <string name="vertify_success">vertify success</string>
+    <string name="no_account">No Account, Register Now</string>
+    <string name="remeber_password">Remember password</string>
+    <string name="unremeber_password">Forgot Password?</string>
 </resources>
