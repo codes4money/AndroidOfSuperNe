@@ -15,11 +15,12 @@
     <string name="title_activity_profile">Profile</string>
 
     <!-- profile -->
-    <string name="my_photoAlbum">my_photoAlbum</string>
-    <string name="my_weibo">my_weibo</string>
-    <string name="my_location">my_location</string>
-    <string name="change_password">change_password</string>
-    <string name="system_not">system_not</string>
-    <string name="logout">logout</string>
+    <string name="my_photoAlbum">My Posts</string>
+    <string name="my_weibo">Weibo</string>
+    <string name="my_location">Location</string>
+    <string name="change_password">Modify Password</string>
+    <string name="system_not">Notification</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_login">Login</string>
 
 </resources>

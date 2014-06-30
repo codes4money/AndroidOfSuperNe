@@ -12,10 +12,12 @@ public class Contact extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+        initNavgation();
     }
 
     @Override
     protected void initNavgation() {
+        super.initNavgation();
         setNavTitle(R.string.contact);
     }
 }

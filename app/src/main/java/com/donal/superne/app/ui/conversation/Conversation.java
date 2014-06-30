@@ -13,10 +13,12 @@ public class Conversation extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
+        initNavgation();
     }
 
     @Override
     protected void initNavgation() {
+        super.initNavgation();
         setNavTitle(R.string.conversation);
 
     }

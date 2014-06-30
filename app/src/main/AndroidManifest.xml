@@ -33,6 +33,10 @@
             android:name="com.donal.superne.app.ui.profile.Profile"
             android:label="@string/title_activity_profile" >
         </activity>
+        <activity
+            android:name="com.donal.superne.app.ui.login.Login"
+            android:label="@string/title_activity_login" >
+        </activity>
     </application>
 
 </manifest>

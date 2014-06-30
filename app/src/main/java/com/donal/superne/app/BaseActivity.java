@@ -6,26 +6,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import org.w3c.dom.Text;
 
 /**
  * Created by donal on 14-6-30.
  */
 public abstract class BaseActivity extends Activity {
-    @ViewInject(R.id.btnLeft)
     private Button btnLeft;
-
-    @ViewInject(R.id.tvTitle)
     private TextView tvTitle;
-
-    @ViewInject(R.id.btnRight)
     private Button  btnRight;
 
     protected void setNavTitle(int resource) {
-        setNavTitle(getResources().getString(resource));
+        tvTitle.setText(resource);
     }
 
     protected void setNavTitle(String title) {
-        LogUtils.d(title);
         tvTitle.setText(title);
     }
 
@@ -39,7 +34,11 @@ public abstract class BaseActivity extends Activity {
         btnRight.setOnClickListener(listener);
     }
 
-    protected abstract void initNavgation();
+    protected void initNavgation() {
+        btnLeft = (Button) findViewById(R.id.btnLeft);
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
+        btnRight = (Button) findViewById(R.id.btnRight);
+    }
 
 
 }
