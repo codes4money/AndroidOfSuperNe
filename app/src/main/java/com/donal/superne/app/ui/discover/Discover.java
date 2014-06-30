@@ -17,6 +17,6 @@ public class Discover extends BaseActivity {
 
     @Override
     protected void initNavgation() {
-        setTvTitle(R.string.discover);
+        setNavTitle(R.string.discover);
     }
 }

@@ -17,6 +17,6 @@ public class Profile extends BaseActivity {
 
     @Override
     protected void initNavgation() {
-        setTvTitle(R.string.profile);
+        setNavTitle(R.string.profile);
     }
 }

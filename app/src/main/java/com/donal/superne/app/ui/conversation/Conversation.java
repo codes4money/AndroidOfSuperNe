@@ -17,7 +17,7 @@ public class Conversation extends BaseActivity {
 
     @Override
     protected void initNavgation() {
-        setTvTitle(R.string.conversation);
+        setNavTitle(R.string.conversation);
 
     }
 }

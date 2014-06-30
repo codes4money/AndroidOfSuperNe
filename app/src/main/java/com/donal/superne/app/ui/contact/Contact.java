@@ -16,6 +16,6 @@ public class Contact extends BaseActivity {
 
     @Override
     protected void initNavgation() {
-        setTvTitle(R.string.contact);
+        setNavTitle(R.string.contact);
     }
 }

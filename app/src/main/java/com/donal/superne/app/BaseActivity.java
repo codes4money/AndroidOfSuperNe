@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -19,11 +20,12 @@ public abstract class BaseActivity extends Activity {
     @ViewInject(R.id.btnRight)
     private Button  btnRight;
 
-    protected void setTvTitle(int resource) {
-        setTvTitle(getResources().getString(resource));
+    protected void setNavTitle(int resource) {
+        setNavTitle(getResources().getString(resource));
     }
 
-    protected void setTvTitle(String title) {
+    protected void setNavTitle(String title) {
+        LogUtils.d(title);
         tvTitle.setText(title);
     }
 
