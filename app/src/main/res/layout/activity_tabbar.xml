@@ -24,10 +24,10 @@
                 android:id="@+id/main_tab"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:layout_gravity="bottom"
-                android:background="@android:color/white"
+                android:background="@color/tabbar"
                 android:visibility="visible"
                 android:fadingEdge="none"
                 >
@@ -55,10 +55,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="18dp"
                         android:layout_alignParentBottom="true"
-                        android:text="发布"
+                        android:text="@string/conversation"
                         android:gravity="center_horizontal"
                         android:textColor="@color/tabbar_text_color"
                         android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/tab_textsize"
                         />
             </RelativeLayout>
             <RelativeLayout
@@ -85,10 +86,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="18dp"
                         android:layout_alignParentBottom="true"
-                        android:text="通讯录"
+                        android:text="@string/contact"
                         android:gravity="center_horizontal"
                         android:textColor="@color/tabbar_text_color"
                         android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/tab_textsize"
                         />
             </RelativeLayout>
             <RelativeLayout
@@ -115,10 +117,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="18dp"
                         android:layout_alignParentBottom="true"
-                        android:text="助手"
+                        android:text="@string/discover"
                         android:gravity="center_horizontal"
                         android:textColor="@color/tabbar_text_color"
                         android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/tab_textsize"
                         />
             </RelativeLayout>
 
@@ -146,10 +149,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="18dp"
                         android:layout_alignParentBottom="true"
-                        android:text="我的"
+                        android:text="@string/profile"
                         android:gravity="center_horizontal"
                         android:textColor="@color/tabbar_text_color"
                         android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/tab_textsize"
                         />
             </RelativeLayout>
         </LinearLayout>
