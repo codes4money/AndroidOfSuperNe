@@ -45,4 +45,18 @@
     <string name="http_exception_error">http_exception_error</string>
     <string name="socket_exception_error">socket_exception_error</string>
     <string name="app_run_code_error">app_run_code_error</string>
+
+    <!--General-->
+    <string name="ok">OK</string>
+
+    <!-- 网络和内存卡提示 -->
+    <string name="prompt">prompt</string>
+    <string name="check_connection">network not connected, check connection！</string>
+    <string name="check_sdcard">check_sdcard！</string>
+    <string name="close">close</string>
+    <string name="exit">exit</string>
+    <string name="confirm">confirm</string>
+    <string name="cancel">cancel</string>
+
+    <string name="menu_settings">menu settings</string>
 </resources>
