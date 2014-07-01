@@ -48,7 +48,7 @@ public class Conversation extends BaseActivity {
                 Message msg = new Message();
                 try {
                     XMPPTCPConnection xmpptcpConnection = XmppConnectionManager.getInstance().getConnection();
-                    xmpptcpConnection.login("8001", "123", "Android");
+                    xmpptcpConnection.login("admin", "123", "Android");
 //                    List<org.jivesoftware.smack.packet.Message> offMessages = new OffineManager(xmpptcpConnection).getMessages();
                     XmppConnectionManager.setAvailable();
                     msg.what = 1;

@@ -58,6 +58,10 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
         btnRight.setOnClickListener(listener);
     }
 
+    protected Button getBtnRight() {
+        return btnRight;
+    }
+
     protected void initNavgation() {
         btnLeft = (Button) findViewById(R.id.btnLeft);
         tvTitle = (TextView) findViewById(R.id.tvTitle);

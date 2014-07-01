@@ -2,6 +2,7 @@ package com.donal.superne.app.manager;
 
 
 import com.donal.superne.app.BaseApplication;
+import com.lidroid.xutils.util.LogUtils;
 import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
@@ -36,10 +37,22 @@ public class XmppConnectionManager {
     }
 
     public static synchronized XMPPTCPConnection init() {
-        if (xmpptcpConnection == null || !xmpptcpConnection.isAuthenticated()) {
+        if (xmpptcpConnection == null) {
             try
             {
-                openConnection();
+                LogUtils.d("sss");
+                SmackAndroid.init(BaseApplication.getInstance());
+                ConnectionConfiguration config = new ConnectionConfiguration(XMPP_HOST, XMPP_PORT, XMPP_SERVER_NAME);
+                config.setDebuggerEnabled(true);
+                config.setRosterLoadedAtLogin(false);
+                config.setReconnectionAllowed(false);
+                config.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled);
+                config.setSendPresence(false);
+                SmackConfiguration.setDefaultPacketReplyTimeout(5000);
+                xmpptcpConnection = new XMPPTCPConnection(config);
+                xmpptcpConnection.connect();// 连接到服务器
+                PingManager pingManager = PingManager.getInstanceFor(xmpptcpConnection);
+                pingManager.setPingInterval(3000);
             }
             catch (IOException e)
             {
@@ -55,28 +68,6 @@ public class XmppConnectionManager {
             }
         }
         return xmpptcpConnection;
-    }
-
-    /**
-    * xmpp连接
-    */
-    public static void openConnection() throws IOException, XMPPException, SmackException {
-        if (xmpptcpConnection != null) {
-            xmpptcpConnection.isConnected();
-            xmpptcpConnection = null;
-        }
-        SmackAndroid.init(BaseApplication.getInstance());
-        ConnectionConfiguration config = new ConnectionConfiguration(XMPP_HOST, XMPP_PORT, XMPP_SERVER_NAME);
-        config.setDebuggerEnabled(true);
-        config.setRosterLoadedAtLogin(false);
-        config.setReconnectionAllowed(false);
-        config.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled);
-        config.setSendPresence(false);
-        SmackConfiguration.setDefaultPacketReplyTimeout(5000);
-        xmpptcpConnection = new XMPPTCPConnection(config);
-        xmpptcpConnection.connect();// 连接到服务器
-        PingManager pingManager = PingManager.getInstanceFor(xmpptcpConnection);
-        pingManager.setPingInterval(3000);
     }
 
     /**

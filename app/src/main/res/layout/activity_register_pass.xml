@@ -9,6 +9,7 @@
     <include layout="@layout/navigationbar"/>
 
     <ImageView
+            android:id="@+id/imgAvatar"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
@@ -17,6 +18,7 @@
             />
 
     <EditText
+            android:id="@+id/edtNickname"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -29,6 +31,7 @@
             />
 
     <EditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/login_input"
@@ -37,6 +40,7 @@
             android:gravity="center_vertical|left"
             android:paddingLeft="10dp"
             android:hint="@string/input_password"
+            android:inputType="textPassword"
             />
 
 </LinearLayout>
