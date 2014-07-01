@@ -1,6 +1,7 @@
 package com.donal.superne.app.manager;
 
 
+import com.donal.superne.app.BaseApplication;
 import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
@@ -64,7 +65,7 @@ public class XmppConnectionManager {
             xmpptcpConnection.isConnected();
             xmpptcpConnection = null;
         }
-//        SmackAndroid.init();
+        SmackAndroid.init(BaseApplication.getInstance());
         ConnectionConfiguration config = new ConnectionConfiguration(XMPP_HOST, XMPP_PORT, XMPP_SERVER_NAME);
         config.setDebuggerEnabled(true);
         config.setRosterLoadedAtLogin(false);
