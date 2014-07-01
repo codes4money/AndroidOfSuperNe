@@ -20,81 +20,86 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
     <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
-    <uses-feature android:name="android.hardware.camera" android:required="false"/>
-    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
-    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
-    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
-    <uses-feature android:name="android.hardware.wifi" android:required="false"/>
-    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
     <!-- Donut-specific flags which allow us to run on any dpi screens. -->
-    <supports-screens android:xlargeScreens="true"
-                      android:largeScreens="true"
-                      android:normalScreens="true"
-                      android:smallScreens="true"
-                      android:anyDensity="true"/>
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <application
         android:name="com.donal.superne.app.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar"
-        >
+        android:theme="@android:style/Theme.NoTitleBar" >
         <activity
             android:name="com.donal.superne.app.ui.tabbar.Tabbar"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.conversation.Conversation"
-            android:screenOrientation="portrait"
-             >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.contact.Contact"
-            android:screenOrientation="portrait"
-             >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.discover.Discover"
-            android:screenOrientation="portrait"
-             >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.profile.Profile"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.login.Login"
-            android:screenOrientation="portrait"
-             >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.Welcome"
-            android:screenOrientation="portrait"
-             >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.donal.superne.app.ui.register.Register"
-            android:screenOrientation="portrait"
-             >
+            android:screenOrientation="portrait" >
         </activity>
 
         <service
@@ -102,6 +107,11 @@
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <activity
+            android:name="com.donal.superne.app.ui.register.RegisterPass"
+            android:label="@string/title_activity_register_pass" >
+        </activity>
     </application>
 
 </manifest>

@@ -25,7 +25,7 @@
     <string name="title_activity_welcome">Welcome</string>
     <string name="title_activity_register">Register</string>
 
-    <!--登录页面  -->
+    <!-- 登录页面 -->
     <string name="input_accountmobile">mobile</string>
     <string name="input_password">password</string>
     <string name="remember_password">remember password</string>
@@ -37,7 +37,14 @@
     <string name="remeber_password">Remember password</string>
     <string name="unremeber_password">Forgot Password?</string>
 
-    <!--App exeception-->
+    <!-- register -->
+    <string name="register">Register</string>
+    <string name="only_support_chinese_mobile">Only support Chinese mobile now</string>
+    <string name="region">Country Or Region</string>
+    <string name="input_mobile">input mobile please</string>
+    <string name="input_nickname">nickname</string>
+
+    <!-- App exeception -->
     <string name="network_not_connected">network not connected</string>
     <string name="xml_parser_failed">xml_parser_failed</string>
     <string name="io_exception_error">io_exception_error</string>
@@ -46,7 +53,7 @@
     <string name="socket_exception_error">socket_exception_error</string>
     <string name="app_run_code_error">app_run_code_error</string>
 
-    <!--General-->
+    <!-- General -->
     <string name="ok">OK</string>
 
     <!-- 网络和内存卡提示 -->
@@ -57,6 +64,7 @@
     <string name="exit">exit</string>
     <string name="confirm">confirm</string>
     <string name="cancel">cancel</string>
-
     <string name="menu_settings">menu settings</string>
+    <string name="title_activity_register_pass">RegisterPass</string>
+
 </resources>
