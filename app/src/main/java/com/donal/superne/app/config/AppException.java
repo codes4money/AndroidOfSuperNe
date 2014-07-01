@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.os.Environment;
 import android.widget.Toast;
 import com.donal.superne.app.BaseApplication;
+import com.lidroid.xutils.util.LogUtils;
 import org.apache.http.HttpException;
 
 import java.io.File;
@@ -216,6 +217,7 @@ public class AppException extends Exception implements UncaughtExceptionHandler{
 		}
 		
 		final String crashReport = getCrashReport(context, ex);
+        LogUtils.d(crashReport);
 		return true;
 	}
 	/**

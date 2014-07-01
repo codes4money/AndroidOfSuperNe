@@ -1,10 +1,15 @@
 package com.donal.superne.app;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import com.donal.superne.app.config.AppException;
 import com.lidroid.xutils.util.LogUtils;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 /**
  * Created by donal on 14-6-30.
@@ -16,13 +21,29 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LogUtils.allowD = true;
+        LogUtils.allowD = BuildConfig.DEBUG;
         baseApplication = this;
+        initAUIL(this);
         Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
     }
 
     public synchronized static BaseApplication getInstance() {
         return baseApplication;
+    }
+
+    /**
+     * 初始化AUIL
+     * @param context
+     */
+    private void initAUIL(Context context) {
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+                .writeDebugLogs() // Remove for release app
+                .build();
+        ImageLoader.getInstance().init(config);
     }
 
     /**

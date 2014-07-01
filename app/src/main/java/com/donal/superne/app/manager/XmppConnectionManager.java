@@ -16,8 +16,8 @@ import java.io.IOException;
  */
 public class XmppConnectionManager {
 	public static final String XMPP_HOST = "112.126.70.4";
-	public static final int XMPP_PORT = 5228;
-	public static String XMPP_SERVER_NAME = "super";
+	public static final int XMPP_PORT = 5222;
+	public static String XMPP_SERVER_NAME = "superne";
 
     private static XmppConnectionManager xmppConnectionManager;
 
