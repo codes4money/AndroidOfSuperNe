@@ -2,13 +2,20 @@ package com.donal.superne.app.manager;
 
 
 import com.donal.superne.app.BaseApplication;
+import com.donal.superne.app.model.register.RegistIQProvider;
+import com.donal.superne.app.model.register.Registration;
+import com.donal.superne.app.model.register.RegistrationIQ;
+import com.google.gson.Gson;
 import com.lidroid.xutils.util.LogUtils;
 import org.jivesoftware.smack.*;
+import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Presence;
+import org.jivesoftware.smack.provider.ProviderManager;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smackx.ping.PingManager;
 
 import java.io.IOException;
+import java.security.Provider;
 
 /**
  *
@@ -51,6 +58,7 @@ public class XmppConnectionManager {
                 SmackConfiguration.setDefaultPacketReplyTimeout(5000);
                 xmpptcpConnection = new XMPPTCPConnection(config);
                 xmpptcpConnection.connect();// 连接到服务器
+                ProviderManager.addIQProvider("result", "superne:iq:register", new RegistIQProvider());
                 PingManager pingManager = PingManager.getInstanceFor(xmpptcpConnection);
                 pingManager.setPingInterval(3000);
             }
@@ -114,5 +122,29 @@ public class XmppConnectionManager {
     {
         Presence presence = new Presence(Presence.Type.available);
         xmpptcpConnection.sendPacket(presence);
+    }
+
+    /**
+     * xmpp注册
+     * @param registration
+     * @throws SmackException.NotConnectedException
+     * @throws XMPPException.XMPPErrorException
+     * @throws SmackException.NoResponseException
+     */
+    public void register(Registration registration) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException
+    {
+        RegistrationIQ iq = new RegistrationIQ();
+        iq.setType(IQ.Type.GET);
+        iq.setTo(xmpptcpConnection.getServiceName());
+        iq.setMsg(new Gson().toJson(registration));
+        RegistrationIQ packet = (RegistrationIQ) xmpptcpConnection.createPacketCollectorAndSend(iq).nextResultOrThrow();
+        if (packet.getCode().equals("0"))
+        {
+            //注册成功
+        }
+        else
+        {
+            LogUtils.d(packet.getMsg());
+        }
     }
 }

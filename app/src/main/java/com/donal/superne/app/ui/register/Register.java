@@ -15,10 +15,10 @@ import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
-public class Register extends BaseActivity {
+public class Register extends BaseActivity implements View.OnClickListener{
 
-    @ViewInject(R.id.edtAcount)
-    private EditText edtAcount;
+    @ViewInject(R.id.edtAccount)
+    private EditText edtAccount;
 
     @ViewInject(R.id.btnReg)
     private Button btnReg;
@@ -28,9 +28,19 @@ public class Register extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ViewUtils.inject(this);
+        initNavgation();
     }
 
-    public void ButtonClick(View view) {
+    @Override
+    protected void initNavgation() {
+        super.initNavgation();
+        setBtnLeft(this);
+        setBtnRight(this);
+        btnReg.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnReg:
                 register();
@@ -39,7 +49,7 @@ public class Register extends BaseActivity {
     }
 
     private void register() {
-        String account = edtAcount.getEditableText().toString();
+        String account = edtAccount.getEditableText().toString();
         if (StringUtils.empty(account)) {
             return;
         }

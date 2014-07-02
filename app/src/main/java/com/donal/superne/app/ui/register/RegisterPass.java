@@ -10,7 +10,11 @@ import android.widget.ImageView;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
 import com.donal.superne.app.config.AppManager;
+import com.donal.superne.app.config.Constant;
+import com.donal.superne.app.manager.XmppConnectionManager;
+import com.donal.superne.app.model.register.Registration;
 import com.donal.superne.app.utils.StringUtils;
+import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class RegisterPass extends BaseActivity implements View.OnClickListener{
@@ -24,10 +28,14 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
     @ViewInject(R.id.edtPassword)
     private EditText edtPassword;
 
+    private String mobile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_pass);
+        ViewUtils.inject(this);
+        mobile = getIntent().getStringExtra(Constant.MOBILE);
         initNavgation();
     }
 
@@ -37,6 +45,7 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
         setNavTitle(R.string.register);
         setBtnLeft(this);
         setBtnRight(this);
+        getBtnRight().setText("完成");
     }
 
 
@@ -60,6 +69,16 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
         }
         if (StringUtils.doEmpty(password).length() < 6) {
             return;
+        }
+        Registration registration = new Registration();
+        registration.setAvatar("");
+        registration.setUsername(mobile);
+        registration.setName(nickname);
+        registration.setPassword(password);
+        try {
+            XmppConnectionManager.getInstance().register(registration);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

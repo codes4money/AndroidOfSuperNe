@@ -80,6 +80,15 @@
     <orderEntry type="library" exported="" name="asmack-android-8-4.0.0" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.5" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.2" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/gson-2.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
