@@ -18,4 +18,9 @@ public class Constant {
 
     //request code for login
     public static final int REQUEST_REGISTER = 1;
+
+    //request code for Register
+    public static final int REQUEST_REGISTERPASS = 1;
+    public static final String MOBILE = "mobile";
+
 }

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
 import com.donal.superne.app.config.AppManager;
+import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class RegisterPass extends BaseActivity implements View.OnClickListener{
@@ -46,7 +47,19 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
                 AppManager.getAppManager().finishActivity(this);
                 break;
             case R.id.btnRight:
+                submitInfo();
                 break;
+        }
+    }
+
+    private void submitInfo() {
+        String nickname = edtNickname.getEditableText().toString();
+        String password = edtPassword.getEditableText().toString();
+        if (StringUtils.empty(nickname)) {
+            return;
+        }
+        if (StringUtils.doEmpty(password).length() < 6) {
+            return;
         }
     }
 }
