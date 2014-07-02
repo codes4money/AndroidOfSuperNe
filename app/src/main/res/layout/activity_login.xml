@@ -81,7 +81,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/login" />
+            android:text="@string/login"
+            android:onClick="ButtonClick"
+            />
 
     <Button android:layout_gravity="right"
             android:id="@+id/btnReg"
@@ -93,6 +95,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
             android:text="@string/no_account"
+            android:onClick="ButtonClick"
             />
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
+import com.donal.superne.app.manager.XmppConnectionManager;
 import com.donal.superne.app.service.NetworkStateService;
 import com.donal.superne.app.ui.contact.Contact;
 import com.donal.superne.app.ui.conversation.Conversation;
@@ -47,6 +48,7 @@ public class Tabbar extends TabActivity {
     @Override
     protected void onDestroy() {
         stopService(new Intent(this, NetworkStateService.class));
+        XmppConnectionManager.getInstance().disconnect();
         super.onDestroy();
     }
 

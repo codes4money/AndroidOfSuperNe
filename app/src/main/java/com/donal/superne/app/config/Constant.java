@@ -15,4 +15,7 @@ public class Constant {
     public static final int WIFI = 1;
     public static final int GPRS = 2;
     public static final int NO_CONNECT = 3;
+
+    //request code for login
+    public static final int REQUEST_REGISTER = 1;
 }
