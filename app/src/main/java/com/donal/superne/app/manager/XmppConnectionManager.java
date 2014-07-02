@@ -6,11 +6,14 @@ import com.donal.superne.app.model.register.RegistIQProvider;
 import com.donal.superne.app.model.register.Registration;
 import com.donal.superne.app.model.register.RegistrationIQ;
 import com.google.gson.Gson;
+import com.lidroid.xutils.exception.DbException;
+import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.util.LogUtils;
 import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.provider.ProviderManager;
+import org.jivesoftware.smack.sasl.SASLErrorException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smackx.ping.PingManager;
 
@@ -43,7 +46,7 @@ public class XmppConnectionManager {
         return xmppConnectionManager;
     }
 
-    public static synchronized XMPPTCPConnection init() {
+    private static synchronized XMPPTCPConnection init() {
         if (xmpptcpConnection == null) {
             try
             {
@@ -89,8 +92,10 @@ public class XmppConnectionManager {
     }
 
     public void disconnect() {
-        if (xmpptcpConnection != null) {
-            try {
+        if (xmpptcpConnection != null)
+        {
+            try
+            {
                 xmpptcpConnection.disconnect();
                 xmpptcpConnection = null;
                 xmppConnectionManager = null;
@@ -109,8 +114,39 @@ public class XmppConnectionManager {
      * @throws SmackException
      * @throws XMPPException
      */
-    public static void login(String account, String password) throws IOException, SmackException, XMPPException{
-        xmpptcpConnection.login(account, password, "Android");
+    public static void login(String account, String password, XMPPCallback callback) throws IOException, SmackException, XMPPException{
+        String result;
+        try
+        {
+            xmpptcpConnection.login(account, password, "Android");
+            callback.onSuccess();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            result = "登陆失败,错误:" + e.getMessage();
+            callback.onFailure(result);
+        }
+        catch (SmackException e)
+        {
+            e.printStackTrace();
+            result = "登陆失败,错误:" + e.getMessage();
+            callback.onFailure(result);
+        }
+        catch (XMPPException e)
+        {
+            e.printStackTrace();
+            if (e instanceof SASLErrorException)
+            {
+                result = "账号密码不正确，请核对后再试";
+                callback.onFailure(result);
+            }
+            else
+            {
+                result = "登陆失败,错误:" + e.getMessage();
+                callback.onFailure(result);
+            }
+        }
     }
 
     /**
@@ -118,7 +154,7 @@ public class XmppConnectionManager {
      *
      * @throws SmackException.NotConnectedException
      */
-    public static void setAvailable() throws SmackException.NotConnectedException
+    public void setAvailable() throws SmackException.NotConnectedException
     {
         Presence presence = new Presence(Presence.Type.available);
         xmpptcpConnection.sendPacket(presence);
@@ -131,7 +167,7 @@ public class XmppConnectionManager {
      * @throws XMPPException.XMPPErrorException
      * @throws SmackException.NoResponseException
      */
-    public void register(Registration registration) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException
+    public void register(Registration registration, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException
     {
         RegistrationIQ iq = new RegistrationIQ();
         iq.setType(IQ.Type.GET);
@@ -140,11 +176,16 @@ public class XmppConnectionManager {
         RegistrationIQ packet = (RegistrationIQ) xmpptcpConnection.createPacketCollectorAndSend(iq).nextResultOrThrow();
         if (packet.getCode().equals("0"))
         {
-            //注册成功
+            callback.onSuccess();
         }
         else
         {
-            LogUtils.d(packet.getMsg());
+            callback.onFailure(packet.getMsg());
         }
+    }
+
+    public interface XMPPCallback {
+        public void onSuccess();
+        public void onFailure(Object message);
     }
 }

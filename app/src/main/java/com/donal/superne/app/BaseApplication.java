@@ -8,6 +8,7 @@ import com.donal.superne.app.config.AppConfig;
 import com.donal.superne.app.config.AppException;
 import com.donal.superne.app.config.AppManager;
 import com.donal.superne.app.config.MethodsCompat;
+import com.donal.superne.app.model.register.Registration;
 import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -75,6 +76,34 @@ public class BaseApplication extends Application {
             e.printStackTrace();
         }
         return isLogin;
+    }
+
+    /**
+     * 登录账号信息
+     * @param registeration
+     */
+    public void setRegisterationInfo(final Registration registeration) {
+        setProperties(new Properties(){
+            {
+                setProperty("registeration.name", registeration.getUsername());
+                setProperty("registeration.avatar", registeration.getAvatar());
+                setProperty("registeration.nickname", registeration.getName());
+                setProperty("registeration.password", registeration.getPassword());
+            }
+        });
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Registration getRegisterationInfo() {
+        Registration registration = new Registration();
+        registration.setUsername(getProperty("registeration.name"));
+        registration.setAvatar(getProperty("registeration.avatar"));
+        registration.setName(getProperty("registeration.nickname"));
+        registration.setPassword(getProperty("registeration.password"));
+        return registration;
     }
 
     /**

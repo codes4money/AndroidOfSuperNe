@@ -9,7 +9,7 @@
             android:layout_height="30dp"
             android:background="@drawable/btn_back_style"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="-16dp"
+            android:layout_marginLeft="-10dp"
             android:visibility="gone"
     />
     <TextView
@@ -24,6 +24,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
             android:background="@null"
             android:visibility="gone"/>
 </RelativeLayout>

@@ -58,4 +58,7 @@
     <string name="cancel">cancel</string>
     <string name="menu_settings">menu settings</string>
 
+    <!--Country-->
+    <string name="china">China</string>
+
 </resources>

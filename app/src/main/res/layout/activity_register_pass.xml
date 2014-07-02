@@ -26,10 +26,12 @@
             android:layout_height="50dp"
             android:background="@drawable/login_input"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:gravity="center_vertical|left"
             android:paddingLeft="10dp"
             android:hint="@string/input_nickname"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             />
 
     <EditText
@@ -41,11 +43,13 @@
             android:layout_height="50dp"
             android:background="@drawable/login_input"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:gravity="center_vertical|left"
             android:paddingLeft="10dp"
             android:hint="@string/input_password"
             android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             />
 
 </LinearLayout>

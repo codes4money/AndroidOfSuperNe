@@ -12,6 +12,7 @@ import com.donal.superne.app.R;
 import com.donal.superne.app.config.Constant;
 import com.donal.superne.app.manager.OffineManager;
 import com.donal.superne.app.manager.XmppConnectionManager;
+import com.donal.superne.app.model.register.Registration;
 import com.lidroid.xutils.util.LogUtils;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 
@@ -59,6 +60,9 @@ public class Conversation extends BaseActivity {
                         LogUtils.d("aaaa");
                         startService();
                         break;
+                    case 0:
+                        LogUtils.d((String)msg.obj);
+                        break;
                     case -1:
                         break;
                 }
@@ -68,19 +72,43 @@ public class Conversation extends BaseActivity {
         singleThreadExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                Message msg = new Message();
-                try {
-                    XMPPTCPConnection xmpptcpConnection = XmppConnectionManager.getInstance().getConnection();
-                    xmpptcpConnection.login("admin", "123", "Android");
-//                    List<org.jivesoftware.smack.packet.Message> offMessages = new OffineManager(xmpptcpConnection).getMessages();
-                    XmppConnectionManager.setAvailable();
-                    msg.what = 1;
+                final Message msg = new Message();
+                try
+                {
+                    Registration registration = baseApplication.getRegisterationInfo();
+                    XmppConnectionManager.getInstance().login(registration.getUsername(), registration.getPassword(), new XmppConnectionManager.XMPPCallback() {
+                        @Override
+                        public void onSuccess() {
+                            try
+                            {
+                                List<org.jivesoftware.smack.packet.Message> offMessages = new OffineManager(XmppConnectionManager.getInstance().getConnection()).getMessages();
+                                XmppConnectionManager.getInstance().setAvailable();
+                                msg.what = 1;
+                                msg.obj = offMessages;
+                                handler.sendMessage(msg);
+                            }
+                            catch (Exception e)
+                            {
+                                msg.what = -1;
+                                handler.sendMessage(msg);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Object message) {
+                            msg.what = 0;
+                            msg.obj = message;
+                            handler.sendMessage(msg);
+                        }
+                    });
                 }
-                catch (Exception e) {
+                catch (Exception e)
+                {
                     e.printStackTrace();
                     msg.what = -1;
+                    handler.sendMessage(msg);
                 }
-                handler.sendMessage(msg);
+
             }
         });
     }

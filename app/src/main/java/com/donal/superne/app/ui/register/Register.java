@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
+import com.donal.superne.app.config.AppManager;
 import com.donal.superne.app.config.Constant;
 import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -35,13 +36,15 @@ public class Register extends BaseActivity implements View.OnClickListener{
     protected void initNavgation() {
         super.initNavgation();
         setBtnLeft(this);
-        setBtnRight(this);
         btnReg.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btnLeft:
+                AppManager.getAppManager().finishActivity(this);
+                break;
             case R.id.btnReg:
                 register();
                 break;
@@ -66,6 +69,8 @@ public class Register extends BaseActivity implements View.OnClickListener{
         }
         switch (requestCode) {
             case Constant.REQUEST_REGISTERPASS:
+                setResult(RESULT_OK);
+                AppManager.getAppManager().finishActivity(this);
                 break;
         }
     }

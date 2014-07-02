@@ -2,16 +2,28 @@ package com.donal.superne.app.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
+import com.donal.superne.app.config.AppManager;
 import com.donal.superne.app.config.Constant;
+import com.donal.superne.app.manager.OffineManager;
+import com.donal.superne.app.manager.XmppConnectionManager;
+import com.donal.superne.app.model.register.Registration;
 import com.donal.superne.app.ui.register.Register;
+import com.donal.superne.app.ui.tabbar.Tabbar;
 import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class Login extends BaseActivity {
@@ -61,7 +73,70 @@ public class Login extends BaseActivity {
         if (password.length() < 6) {
             return;
         }
+        final Registration registration = new Registration();
+        registration.setAvatar("");
+        registration.setUsername(account);
+        registration.setName("");
+        registration.setPassword(password);
+        final Handler handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case 1:
+                        setResult(RESULT_OK);
+                        startActivity(new Intent(Login.this, Tabbar.class));
+                        AppManager.getAppManager().finishActivity(Login.this);
+                        break;
+                    case 0:
+                        LogUtils.d((String)msg.obj);
+                        break;
+                    case -1:
+                        break;
+                }
+            }
+        };
+        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+        singleThreadExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                final Message msg = new Message();
+                try
+                {
+                    baseApplication.setRegisterationInfo(registration);
+                    XmppConnectionManager.getInstance().login(registration.getUsername(), registration.getPassword(), new XmppConnectionManager.XMPPCallback() {
+                        @Override
+                        public void onSuccess() {
+                            try
+                            {
+                                List<org.jivesoftware.smack.packet.Message> offMessages = new OffineManager(XmppConnectionManager.getInstance().getConnection()).getMessages();
+                                XmppConnectionManager.getInstance().setAvailable();
+                                msg.what = 1;
+                                msg.obj = offMessages;
+                                handler.sendMessage(msg);
+                            }
+                            catch (Exception e)
+                            {
+                                msg.what = -1;
+                                handler.sendMessage(msg);
+                            }
+                        }
 
+                        @Override
+                        public void onFailure(Object message) {
+                            msg.what = 0;
+                            msg.obj = message;
+                            handler.sendMessage(msg);
+                        }
+                    });
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                    msg.what = -1;
+                    handler.sendMessage(msg);
+                }
+            }
+        });
     }
 
     private void register() {
@@ -75,6 +150,8 @@ public class Login extends BaseActivity {
         }
         switch (requestCode) {
             case Constant.REQUEST_REGISTER:
+                startActivity(new Intent(this, Tabbar.class));
+                AppManager.getAppManager().finishActivity(this);
                 break;
         }
 
