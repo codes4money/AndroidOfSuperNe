@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import com.donal.superne.app.config.AppException;
+import com.donal.superne.app.config.AppManager;
 import com.lidroid.xutils.util.LogUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -44,6 +45,13 @@ public class BaseApplication extends Application {
                 .writeDebugLogs() // Remove for release app
                 .build();
         ImageLoader.getInstance().init(config);
+    }
+
+    /**
+     * exit
+     */
+    public void exit() {
+        AppManager.getAppManager().finishAllActivity();
     }
 
     /**

@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
+import com.donal.superne.app.service.NetworkStateService;
 import com.donal.superne.app.ui.contact.Contact;
 import com.donal.superne.app.ui.conversation.Conversation;
 import com.donal.superne.app.ui.discover.Discover;
@@ -37,9 +38,16 @@ public class Tabbar extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbar);
+        startService(new Intent(this, NetworkStateService.class));
         prepareIntent();
         setupIntent();
         initUI();
+    }
+
+    @Override
+    protected void onDestroy() {
+        stopService(new Intent(this, NetworkStateService.class));
+        super.onDestroy();
     }
 
     private void initUI() {

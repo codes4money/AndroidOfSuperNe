@@ -73,7 +73,7 @@
 
     <Button android:textSize="20dp"
             android:textColor="@android:color/white"
-            android:id="@+id/loginBtn"
+            android:id="@+id/btnLogin"
             android:background="@drawable/login_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -84,7 +84,7 @@
             android:text="@string/login" />
 
     <Button android:layout_gravity="right"
-            android:id="@+id/regBtn"
+            android:id="@+id/btnReg"
             android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

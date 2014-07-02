@@ -110,7 +110,7 @@
 
         <activity
             android:name="com.donal.superne.app.ui.register.RegisterPass"
-            android:label="@string/title_activity_register_pass" >
+             >
         </activity>
     </application>
 

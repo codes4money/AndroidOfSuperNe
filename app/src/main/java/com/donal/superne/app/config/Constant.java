@@ -8,4 +8,11 @@ public class Constant {
     public static final String BASE_URL = "";
 
     public static final String BASE_API = "";
+
+    //Connect Action and Type
+    public static final String CONNECT_ACTION = "ConnectAction";
+    public static final String CONNECT_TYPE= "ConnectType";
+    public static final int WIFI = 1;
+    public static final int GPRS = 2;
+    public static final int NO_CONNECT = 3;
 }

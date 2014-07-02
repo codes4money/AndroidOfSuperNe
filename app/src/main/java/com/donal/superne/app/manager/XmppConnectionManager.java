@@ -84,6 +84,8 @@ public class XmppConnectionManager {
         if (xmpptcpConnection != null) {
             try {
                 xmpptcpConnection.disconnect();
+                xmpptcpConnection = null;
+                xmppConnectionManager = null;
             }
             catch (Exception e) {
                 e.printStackTrace();
