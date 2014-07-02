@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
 import com.donal.superne.app.config.AppManager;
+import com.donal.superne.app.ui.login.Login;
 import com.donal.superne.app.ui.tabbar.Tabbar;
 
 public class Welcome extends BaseActivity {
@@ -18,7 +19,6 @@ public class Welcome extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_welcome);
         final View view = View.inflate(this, R.layout.activity_welcome, null);
         setContentView(view);
         AlphaAnimation aa = new AlphaAnimation(0.3f,1.0f);
@@ -37,18 +37,17 @@ public class Welcome extends BaseActivity {
 
 
     private void redirectTo(){
-//        if(!appContext.isLogin()){
+        if(!baseApplication.returnIsLogin()){
 ////			if(!showWhatsNewOnFirstLaunch()){
-//            Intent intent = new Intent(this,Login.class);
-//            startActivity(intent);
-//            AppManager.getAppManager().finishActivity(this);
+            startActivity(new Intent(this, Login.class));
+            AppManager.getAppManager().finishActivity(this);
 ////			}
-//        }
-//        else {
+        }
+        else {
             Intent intent = new Intent(this, Tabbar.class);
             startActivity(intent);
             AppManager.getAppManager().finishActivity(this);
-//        }
+        }
     }
 
 }
