@@ -73,6 +73,7 @@ public class Login extends BaseActivity {
         if (password.length() < 6) {
             return;
         }
+        loadingPd = showProgress(context, null, null, true);
         final Registration registration = new Registration();
         registration.setAvatar("");
         registration.setUsername(account);
@@ -81,6 +82,7 @@ public class Login extends BaseActivity {
         final Handler handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
+                dismissProgress(loadingPd);
                 switch (msg.what) {
                     case 1:
                         setResult(RESULT_OK);

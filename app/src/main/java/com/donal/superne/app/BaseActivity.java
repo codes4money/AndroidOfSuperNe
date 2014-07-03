@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.provider.Settings;
 import android.view.View;
@@ -38,6 +39,8 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
 
     protected BaseApplication baseApplication;
     protected Context context;
+
+    protected ProgressDialog loadingPd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -305,5 +308,76 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
             inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus()
                     .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    /**
+     * 显示进度条
+     *
+     * @param context
+     *            环境
+     * @param title
+     *            标题
+     * @param message
+     *            信息
+     * @return
+     */
+    public static ProgressDialog showProgress(final Context context,
+                                              CharSequence title, CharSequence message) {
+        try {
+            if (context == null) {
+                return null;
+            }
+            final ProgressDialog dialog = new ProgressDialog(context);
+            dialog.setTitle(title);
+            dialog.setMessage(message);
+            dialog.setCancelable(false);
+            dialog.show();
+            return dialog;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static ProgressDialog showProgress(Context context,
+                                              CharSequence title, CharSequence message,
+                                              boolean cancelable) {
+        try {
+            if (context == null) {
+                return null;
+            }
+            final ProgressDialog dialog = new ProgressDialog(context);
+            dialog.setTitle(title);
+            dialog.setMessage(message);
+            dialog.setCancelable(cancelable);
+            new CountDownTimer(10000,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+                }
+                public void onFinish() {
+                    try {
+                        dialog.dismiss();
+                    } catch (Exception e) {
+
+                    }
+                }
+            }.start();
+            dialog.show();
+            return dialog;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static ProgressDialog dismissProgress(ProgressDialog progressDialog) {
+        try {
+            if (progressDialog != null) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return progressDialog;
     }
 }
