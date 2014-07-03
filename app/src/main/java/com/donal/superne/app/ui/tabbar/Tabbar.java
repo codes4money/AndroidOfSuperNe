@@ -48,7 +48,6 @@ public class Tabbar extends TabActivity {
     @Override
     protected void onDestroy() {
         stopService(new Intent(this, NetworkStateService.class));
-        XmppConnectionManager.getInstance().disconnect();
         super.onDestroy();
     }
 

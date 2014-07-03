@@ -60,6 +60,24 @@ public class BaseApplication extends Application {
     }
 
     /**
+     * 设置登录状态
+     * @param status
+     */
+    public void setIsLogin(final boolean status) {
+        try {
+            this.isLogin = status;
+            setProperties(new Properties(){
+                {
+                    setProperty("user.login", status?"1":"0");
+                }
+            });
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 是否登录
      * @return
      */

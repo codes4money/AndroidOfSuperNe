@@ -78,6 +78,7 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
         if (StringUtils.doEmpty(password).length() < 6) {
             return;
         }
+        loadingPd = showProgress(context, null, null, true);
         final Registration registration = new Registration();
         registration.setAvatar("");
         registration.setUsername(mobile);
@@ -93,10 +94,12 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
                         break;
                     case 0:
                         LogUtils.d((String)msg.obj);
+                        showToast((String)msg.obj);
                         break;
                     case -1:
                         break;
                 }
+                dismissProgress(loadingPd);
             }
         };
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
@@ -118,7 +121,8 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
                             msg.obj = message;
                         }
                     });
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     msg.what = -1;
                 }
                 handler.sendMessage(msg);

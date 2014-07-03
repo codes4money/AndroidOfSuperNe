@@ -79,6 +79,8 @@ public class Conversation extends BaseActivity {
                     XmppConnectionManager.getInstance().login(registration.getUsername(), registration.getPassword(), new XmppConnectionManager.XMPPCallback() {
                         @Override
                         public void onSuccess() {
+                            //mark is logined
+                            baseApplication.setIsLogin(true);
                             try
                             {
                                 List<org.jivesoftware.smack.packet.Message> offMessages = new OffineManager(XmppConnectionManager.getInstance().getConnection()).getMessages();

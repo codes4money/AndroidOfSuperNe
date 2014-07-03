@@ -156,8 +156,8 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
 
     @Override
     public void isExit() {
-        new AlertDialog.Builder(context).setTitle("确定退出吗?")
-                .setNeutralButton("确定", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(context).setTitle(R.string.exit)
+                .setNeutralButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         XmppConnectionManager.getInstance().disconnect();
@@ -165,7 +165,7 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
                         stopService();
                     }
                 })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -203,7 +203,7 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
                 .getExternalStorageState())) {
             new AlertDialog.Builder(context)
                     .setTitle(R.string.prompt)
-                    .setMessage("请检查内存卡")
+                    .setMessage(R.string.check_sdcard)
                     .setPositiveButton(R.string.menu_settings,
                             new DialogInterface.OnClickListener() {
                                 @Override
@@ -215,7 +215,7 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
                                     context.startActivity(intent);
                                 }
                             })
-                    .setNegativeButton("退出",
+                    .setNegativeButton(R.string.exit,
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog,
@@ -229,12 +229,12 @@ public abstract class BaseActivity extends Activity implements AppActivitySuppor
 
     @Override
     public void showToast(String text, int longint) {
-        Toast.makeText(context, text, longint);
+        Toast.makeText(context, text, longint).show();
     }
 
     @Override
     public void showToast(String text) {
-        Toast.makeText(context, text, Toast.LENGTH_SHORT);
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override

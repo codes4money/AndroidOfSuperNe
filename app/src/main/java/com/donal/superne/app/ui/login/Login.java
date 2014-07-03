@@ -82,7 +82,6 @@ public class Login extends BaseActivity {
         final Handler handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
-                dismissProgress(loadingPd);
                 switch (msg.what) {
                     case 1:
                         setResult(RESULT_OK);
@@ -91,10 +90,12 @@ public class Login extends BaseActivity {
                         break;
                     case 0:
                         LogUtils.d((String)msg.obj);
+                        showToast((String)msg.obj);
                         break;
                     case -1:
                         break;
                 }
+                dismissProgress(loadingPd);
             }
         };
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
@@ -102,22 +103,21 @@ public class Login extends BaseActivity {
             @Override
             public void run() {
                 final Message msg = new Message();
-                try
-                {
+                try {
                     baseApplication.setRegisterationInfo(registration);
                     XmppConnectionManager.getInstance().login(registration.getUsername(), registration.getPassword(), new XmppConnectionManager.XMPPCallback() {
                         @Override
                         public void onSuccess() {
-                            try
-                            {
+                            //mark is logined
+                            baseApplication.setIsLogin(true);
+                            try {
                                 List<org.jivesoftware.smack.packet.Message> offMessages = new OffineManager(XmppConnectionManager.getInstance().getConnection()).getMessages();
                                 XmppConnectionManager.getInstance().setAvailable();
                                 msg.what = 1;
                                 msg.obj = offMessages;
                                 handler.sendMessage(msg);
                             }
-                            catch (Exception e)
-                            {
+                            catch (Exception e) {
                                 msg.what = -1;
                                 handler.sendMessage(msg);
                             }
@@ -131,8 +131,7 @@ public class Login extends BaseActivity {
                         }
                     });
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     e.printStackTrace();
                     msg.what = -1;
                     handler.sendMessage(msg);
