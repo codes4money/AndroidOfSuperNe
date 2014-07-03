@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.donal.superne.app.ui.search.SearchByPhone">
+
+    <include
+        layout="@layout/navigationbar"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_size_15"
+            android:layout_marginTop="@dimen/layout_size_10"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/layout_size_15"
+            android:text="@string/search_by_phone"
+            />
+    <EditText
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/edtPhone"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/login_input"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:hint="@string/input_mobile"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            />
+</LinearLayout>

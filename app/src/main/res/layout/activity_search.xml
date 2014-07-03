@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#e9ebea"
+              tools:context="com.donal.superne.app.ui.search.Search">
+
+    <include layout="@layout/navigationbar"/>
+
+
+    <RelativeLayout
+            android:onClick="onClick"
+            android:id="@+id/btnNearBy"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            >
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/profile_location"
+                />
+        <TextView
+                android:layout_marginLeft="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/people_nearby"
+                android:textColor="@color/profile_text_color"
+                android:textSize="@dimen/profile_text_size"
+                />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:onClick="onClick"
+            android:id="@+id/btnSearchByPhone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="1dp"
+            >
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/search_by_phone"
+                />
+        <TextView
+                android:layout_marginLeft="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/search_by_phone"
+                android:textColor="@color/profile_text_color"
+                android:textSize="@dimen/profile_text_size"
+                />
+    </RelativeLayout>
+</LinearLayout>

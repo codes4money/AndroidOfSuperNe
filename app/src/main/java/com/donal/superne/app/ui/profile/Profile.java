@@ -28,7 +28,7 @@ public class Profile extends BaseActivity implements View.OnClickListener{
     @Override
     protected void initNavgation() {
         super.initNavgation();
-        setNavTitle(R.string.profile);
+        setNavTitle(R.string.me);
     }
 
     @Override

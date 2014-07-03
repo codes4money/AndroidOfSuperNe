@@ -3,7 +3,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context="com.donal.superne.app.ui.contact.Contact">
 
-    <include layout="@layout/navigationbar"/>
+    <include
+            android:id="@+id/nav"
+            layout="@layout/navigationbar"/>
+
+    <!--<SwipeRefreshLayout-->
+            <!--android:id="@+id/srlContact"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+        <ListView
+                android:layout_below="@+id/nav"
+                android:id="@+id/lvContact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:footerDividersEnabled="false"
+                android:headerDividersEnabled="false"
+                android:divider="@null"
+                android:fadingEdge="none"
+                android:transcriptMode="disabled"
+                android:cacheColorHint="#00000000"
+                android:listSelector="#00000000" />
+    <!--</SwipeRefreshLayout>-->
+
+    <com.donal.superne.app.widget.MyLetterListView
+            android:id="@+id/leAlpha"
+            android:layout_below="@+id/nav"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="2dp"
+            android:layout_width="20dp"
+            android:background="@color/transparent"
+            android:layout_height="match_parent"/>
 </RelativeLayout>

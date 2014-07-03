@@ -108,8 +108,14 @@
             android:exported="true" >
         </service>
 
+        <activity android:name="com.donal.superne.app.ui.register.RegisterPass" >
+        </activity>
+        <activity android:name="com.donal.superne.app.ui.search.Search" >
+        </activity>
+        <activity android:name="com.donal.superne.app.ui.search.SearchByPhone" >
+        </activity>
         <activity
-            android:name="com.donal.superne.app.ui.register.RegisterPass"
+            android:name="com.donal.superne.app.ui.search.PeopleNearBy"
              >
         </activity>
     </application>

@@ -75,7 +75,7 @@ public class Tabbar extends TabActivity {
         localTabHost.addTab(buildTabSpec(TAB_TAG_CONVERSATION, R.string.conversation, R.drawable.tab_coversation, intentConversation));
         localTabHost.addTab(buildTabSpec(TAB_TAG_CONTACT, R.string.contact, R.drawable.tab_contact, intentContact));
         localTabHost.addTab(buildTabSpec(TAB_TAG_DISCOVER, R.string.discover, R.drawable.tab_discover, intentDiscover));
-        localTabHost.addTab(buildTabSpec(TAB_TAG_PROFILE, R.string.profile, R.drawable.tab_profile, intentProfile));
+        localTabHost.addTab(buildTabSpec(TAB_TAG_PROFILE, R.string.me, R.drawable.tab_profile, intentProfile));
     }
 
     /**
