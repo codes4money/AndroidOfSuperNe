@@ -36,3 +36,13 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.2'
     compile 'com.loopj.android:android-async-http:1.4.5'
 }
+
+task copyNativeLibs(type: Copy) {
+    from fileTree(dir: 'libs', include: '**/*.so') into 'build/native-libs'
+}
+tasks.withType(Compile) { compileTask -> compileTask.dependsOn copyNativeLibs }
+clean.dependsOn 'cleanCopyNativeLibs'
+tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
+    pkgTask.jniFolders = new HashSet<File>()
+    pkgTask.jniFolders.add(new File(buildDir, 'native-libs'))
+}

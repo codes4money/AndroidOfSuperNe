@@ -52,9 +52,9 @@ public class MyLocation extends BaseActivity implements View.OnClickListener, Lo
 
     @Override
     protected void onPause() {
-        super.onPause();
         map.onPause();
         deactivate();
+        super.onPause();
     }
 
     @Override
@@ -113,8 +113,8 @@ public class MyLocation extends BaseActivity implements View.OnClickListener, Lo
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         map.onDestroy();
+        super.onDestroy();
     }
 
     @Override
