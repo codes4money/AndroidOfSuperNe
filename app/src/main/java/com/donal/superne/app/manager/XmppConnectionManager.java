@@ -2,23 +2,21 @@ package com.donal.superne.app.manager;
 
 
 import com.donal.superne.app.BaseApplication;
-import com.donal.superne.app.model.register.RegistIQProvider;
-import com.donal.superne.app.model.register.Registration;
-import com.donal.superne.app.model.register.RegistrationIQ;
 import com.google.gson.Gson;
-import com.lidroid.xutils.exception.DbException;
-import com.lidroid.xutils.exception.HttpException;
+import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.util.LogUtils;
 import org.jivesoftware.smack.*;
-import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Presence;
-import org.jivesoftware.smack.provider.ProviderManager;
 import org.jivesoftware.smack.sasl.SASLErrorException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smackx.ping.PingManager;
+import org.jivesoftware.smackx.superne.Registration;
+import org.jivesoftware.smackx.superne.ResultInfo;
+import org.jivesoftware.smackx.superne.SuperneManager;
+import org.jivesoftware.smackx.superne.User;
 
 import java.io.IOException;
-import java.security.Provider;
+import java.util.List;
 
 /**
  *
@@ -61,7 +59,7 @@ public class XmppConnectionManager {
                 SmackConfiguration.setDefaultPacketReplyTimeout(5000);
                 xmpptcpConnection = new XMPPTCPConnection(config);
                 xmpptcpConnection.connect();// 连接到服务器
-                ProviderManager.addIQProvider("result", "superne:iq:register", new RegistIQProvider());
+//                ProviderManager.addIQProvider("result", "superne:iq:register", new RegistIQProvider());
                 PingManager pingManager = PingManager.getInstanceFor(xmpptcpConnection);
                 pingManager.setPingInterval(3000);
             }
@@ -119,7 +117,7 @@ public class XmppConnectionManager {
         try
         {
             xmpptcpConnection.login(account, password, "Android");
-            callback.onSuccess();
+            callback.onSuccess("");
         }
         catch (IOException e)
         {
@@ -161,7 +159,7 @@ public class XmppConnectionManager {
     }
 
     /**
-     * xmpp注册
+     * 账号注册
      * @param registration
      * @throws SmackException.NotConnectedException
      * @throws XMPPException.XMPPErrorException
@@ -169,23 +167,71 @@ public class XmppConnectionManager {
      */
     public void register(Registration registration, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException
     {
-        RegistrationIQ iq = new RegistrationIQ();
-        iq.setType(IQ.Type.GET);
-        iq.setTo(xmpptcpConnection.getServiceName());
-        iq.setMsg(new Gson().toJson(registration));
-        RegistrationIQ packet = (RegistrationIQ) xmpptcpConnection.createPacketCollectorAndSend(iq).nextResultOrThrow();
-        if (packet.getCode().equals("0"))
-        {
-            callback.onSuccess();
+        ResultInfo resultInfo =  SuperneManager.getInstance(xmpptcpConnection).register(registration);
+        if (resultInfo.getErrorCode().equals("0")) {
+            callback.onSuccess("");
         }
-        else
-        {
-            callback.onFailure(packet.getMsg());
+        else {
+            callback.onFailure(resultInfo.getErrorMsg());
+        }
+    }
+
+    /**
+     * 更新个人资料
+     * @param user
+     * @param callback
+     * @throws SmackException.NotConnectedException
+     * @throws XMPPException.XMPPErrorException
+     * @throws SmackException.NoResponseException
+     */
+    public void updatePersonal(User user, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException {
+        ResultInfo resultInfo = SuperneManager.getInstance(xmpptcpConnection).updateUser(user);
+        LogUtils.d(resultInfo.toString());
+    }
+
+    /**
+     * 昵称搜索
+     * @param name
+     * @param page
+     * @param callback
+     * @throws SmackException.NotConnectedException
+     * @throws XMPPException.XMPPErrorException
+     * @throws SmackException.NoResponseException
+     */
+    public void searchByName(String name, int page, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException{
+        ResultInfo resultInfo = SuperneManager.getInstance(xmpptcpConnection).searchUserByUserName(name, page);
+        if (resultInfo.getErrorCode().equals("0")) {
+            List<User> users = new Gson().fromJson(resultInfo.getContent(),new TypeToken<List<User>>(){}.getType());
+            callback.onSuccess(users);
+        }
+        else {
+            callback.onFailure(resultInfo.getErrorMsg());
+        }
+
+    }
+
+    /**
+     * 账号搜索
+     * @param username
+     * @param page
+     * @param callback
+     * @throws SmackException.NotConnectedException
+     * @throws XMPPException.XMPPErrorException
+     * @throws SmackException.NoResponseException
+     */
+    public void searchByUsername(String username, int page, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException{
+        ResultInfo resultInfo = SuperneManager.getInstance(xmpptcpConnection).searchUserByUserName(username, page);
+        if (resultInfo.getErrorCode().equals("0")) {
+            List<User> users = new Gson().fromJson(resultInfo.getContent(),new TypeToken<List<User>>(){}.getType());
+            callback.onSuccess(users);
+        }
+        else {
+            callback.onFailure(resultInfo.getErrorMsg());
         }
     }
 
     public interface XMPPCallback {
-        public void onSuccess();
-        public void onFailure(Object message);
+        public void onSuccess(Object object);
+        public void onFailure(Object object);
     }
 }

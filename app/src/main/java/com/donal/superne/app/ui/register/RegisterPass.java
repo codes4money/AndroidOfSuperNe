@@ -2,10 +2,7 @@ package com.donal.superne.app.ui.register;
 
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,11 +11,11 @@ import com.donal.superne.app.R;
 import com.donal.superne.app.config.AppManager;
 import com.donal.superne.app.config.Constant;
 import com.donal.superne.app.manager.XmppConnectionManager;
-import com.donal.superne.app.model.register.Registration;
 import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import org.jivesoftware.smackx.superne.Registration;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -110,7 +107,7 @@ public class RegisterPass extends BaseActivity implements View.OnClickListener{
                 try {
                     XmppConnectionManager.getInstance().register(registration, new XmppConnectionManager.XMPPCallback() {
                         @Override
-                        public void onSuccess() {
+                        public void onSuccess(Object object) {
                             baseApplication.setRegisterationInfo(registration);
                             msg.what = 1;
                         }

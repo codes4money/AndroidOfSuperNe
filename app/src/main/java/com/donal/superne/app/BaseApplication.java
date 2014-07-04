@@ -8,13 +8,13 @@ import com.donal.superne.app.config.AppConfig;
 import com.donal.superne.app.config.AppException;
 import com.donal.superne.app.config.AppManager;
 import com.donal.superne.app.config.MethodsCompat;
-import com.donal.superne.app.model.register.Registration;
 import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import org.jivesoftware.smackx.superne.Registration;
 
 import java.io.*;
 import java.util.Hashtable;

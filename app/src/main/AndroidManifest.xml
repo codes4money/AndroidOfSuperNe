@@ -118,11 +118,17 @@
         </activity>
         <activity android:name="com.donal.superne.app.ui.search.PeopleNearBy" >
         </activity>
-        <activity
-            android:name="com.donal.superne.app.ui.search.MyLocation"
-            >
+        <activity android:name="com.donal.superne.app.ui.search.MyLocation" >
         </activity>
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="415943dea57718a4fab735ac76636a67" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="415943dea57718a4fab735ac76636a67" />
+
+        <activity
+            android:name="com.donal.superne.app.ui.search.SearchResult"
+             >
+        </activity>
     </application>
 
 </manifest>

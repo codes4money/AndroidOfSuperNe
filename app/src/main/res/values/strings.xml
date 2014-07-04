@@ -44,6 +44,7 @@
     <!-- Search -->
     <string name="search">Search</string>
     <string name="search_by_phone">Search By Phone</string>
+    <string name="search_result">Result</string>
 
     <!-- App exeception -->
     <string name="network_not_connected">network not connected</string>
@@ -69,5 +70,6 @@
 
     <!-- Country -->
     <string name="china">China</string>
+
 
 </resources>

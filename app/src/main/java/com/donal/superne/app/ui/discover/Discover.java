@@ -1,5 +1,6 @@
 package com.donal.superne.app.ui.discover;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
+import com.donal.superne.app.ui.search.Search;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -44,6 +46,7 @@ public class Discover extends BaseActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnMoments:
+                startActivity(new Intent(this, Search.class));
                 break;
             case R.id.btnNearBy:
                 break;

@@ -12,9 +12,8 @@ import com.donal.superne.app.R;
 import com.donal.superne.app.config.Constant;
 import com.donal.superne.app.manager.OffineManager;
 import com.donal.superne.app.manager.XmppConnectionManager;
-import com.donal.superne.app.model.register.Registration;
 import com.lidroid.xutils.util.LogUtils;
-import org.jivesoftware.smack.tcp.XMPPTCPConnection;
+import org.jivesoftware.smackx.superne.Registration;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -78,7 +77,7 @@ public class Conversation extends BaseActivity {
                     Registration registration = baseApplication.getRegisterationInfo();
                     XmppConnectionManager.getInstance().login(registration.getUsername(), registration.getPassword(), new XmppConnectionManager.XMPPCallback() {
                         @Override
-                        public void onSuccess() {
+                        public void onSuccess(Object object) {
                             //mark is logined
                             baseApplication.setIsLogin(true);
                             try

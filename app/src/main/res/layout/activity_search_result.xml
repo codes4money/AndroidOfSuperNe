@@ -1,15 +1,17 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context="com.donal.superne.app.ui.conversation.Conversation">
+    android:orientation="vertical"
+    tools:context="com.donal.superne.app.ui.search.SearchResult">
+
     <include
-            android:id="@+id/nav"
-            layout="@layout/navigationbar"/>
+        layout="@layout/navigationbar"/>
+
+
     <ListView
-            android:layout_below="@+id/nav"
-            android:id="@+id/lvConversation"
+            android:id="@+id/lvResult"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:footerDividersEnabled="false"
@@ -19,6 +21,4 @@
             android:transcriptMode="disabled"
             android:cacheColorHint="#00000000"
             android:listSelector="#00000000" />
-
-
-</RelativeLayout>
+</LinearLayout>

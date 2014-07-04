@@ -13,15 +13,16 @@ import com.donal.superne.app.config.AppManager;
 import com.donal.superne.app.config.Constant;
 import com.donal.superne.app.manager.OffineManager;
 import com.donal.superne.app.manager.XmppConnectionManager;
-import com.donal.superne.app.model.register.Registration;
 import com.donal.superne.app.ui.register.Register;
 import com.donal.superne.app.ui.tabbar.Tabbar;
 import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import org.jivesoftware.smackx.superne.Registration;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -107,7 +108,7 @@ public class Login extends BaseActivity {
                     baseApplication.setRegisterationInfo(registration);
                     XmppConnectionManager.getInstance().login(registration.getUsername(), registration.getPassword(), new XmppConnectionManager.XMPPCallback() {
                         @Override
-                        public void onSuccess() {
+                        public void onSuccess(Object object) {
                             //mark is logined
                             baseApplication.setIsLogin(true);
                             try {

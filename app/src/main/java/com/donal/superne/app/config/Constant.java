@@ -23,4 +23,7 @@ public class Constant {
     public static final int REQUEST_REGISTERPASS = 1;
     public static final String MOBILE = "mobile";
 
+    //search users
+    public static final String USERS = "users";
+
 }

@@ -57,6 +57,7 @@ public class Profile extends BaseActivity implements View.OnClickListener{
                 .setNeutralButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        baseApplication.setIsLogin(false);
                         XmppConnectionManager.getInstance().disconnect();
                         stopService();
                         AppManager.getAppManager().finishAllActivity();
