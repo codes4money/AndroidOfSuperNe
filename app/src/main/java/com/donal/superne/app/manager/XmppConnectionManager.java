@@ -16,6 +16,8 @@ import org.jivesoftware.smackx.superne.SuperneManager;
 import org.jivesoftware.smackx.superne.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -190,6 +192,26 @@ public class XmppConnectionManager {
     }
 
     /**
+     * 获取个人资料
+     * @param username
+     * @param callback
+     * @throws SmackException.NotConnectedException
+     * @throws XMPPException.XMPPErrorException
+     * @throws SmackException.NoResponseException
+     */
+    public void getPersonal(String username, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException {
+        ResultInfo resultInfo = SuperneManager.getInstance(xmpptcpConnection).getUserInfo(username);
+        LogUtils.d(resultInfo.toString());
+        if ("0".equals(resultInfo.getErrorCode())) {
+            User user = new Gson().fromJson(resultInfo.getContent(), new TypeToken<User>(){}.getType());
+            callback.onSuccess(user);
+        }
+        else {
+            callback.onFailure(resultInfo.getErrorMsg());
+        }
+    }
+
+    /**
      * 昵称搜索
      * @param name
      * @param page
@@ -240,7 +262,37 @@ public class XmppConnectionManager {
      */
     public void requestAddingUser(User user, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException, SmackException.NotLoggedInException{
         Roster roster = xmpptcpConnection.getRoster();
-        roster.createEntry(user.getUsername(), null, new String[] { "friends" });
+        String username = user.getUsername().contains("@")? user.getUsername(): user.getUsername() + "@" + xmpptcpConnection.getServiceName();
+        roster.createEntry(username, user.getName(), new String[] { "friends" });
+        Presence subscription = new Presence(Presence.Type.subscribe);
+        subscription.setTo(username);
+        callback.onSuccess("");
+    }
+
+    /**
+     * 好友列表
+     * @param callback
+     * @throws SmackException.NotConnectedException
+     * @throws XMPPException.XMPPErrorException
+     * @throws SmackException.NoResponseException
+     * @throws SmackException.NotLoggedInException
+     */
+    public void getFriends(XMPPCallback callback)  throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException, SmackException.NotLoggedInException{
+        List<User> friends = new ArrayList<User>();
+        Roster roster = xmpptcpConnection.getRoster();
+        Collection<RosterGroup> groups = roster.getGroups();
+        for (RosterGroup group : groups) {
+            Collection<RosterEntry> entries = group.getEntries();
+            for (RosterEntry entry : entries) {
+                if ("both".equals(entry.getType().name())) {
+                    User friend = new User();
+                    friend.setUsername(entry.getUser());
+                    friend.setName(entry.getName());
+                    friends.add(friend);
+                }
+            }
+        }
+        callback.onSuccess(friends);
     }
 
     public interface XMPPCallback {

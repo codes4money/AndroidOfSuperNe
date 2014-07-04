@@ -1,5 +1,8 @@
 package com.donal.superne.app.config;
 
+import android.net.Uri;
+
+
 /**
  * Created by donal on 14-7-1.
  */
@@ -26,4 +29,10 @@ public class Constant {
     //search users
     public static final String USERS = "users";
 
+    public static final String ACTION_REQUEST_FROM_USER_ADD_FRIEND = "ACTION_REQUEST_FROM_USER_ADD_FRIEND";
+    public static final String ACTION_FRIEND_COMFIRE = "ACTION_FRIEND_COMFIRE";
+    public static final String ACTION_FRIEND_DELETE = "ACTION_FRIEND_DELETE";
+
+    //DataBase
+    public static final Uri USER_URI = Uri.parse("content://org.jivesoftware.smackx.superne/Conversation");
 }
