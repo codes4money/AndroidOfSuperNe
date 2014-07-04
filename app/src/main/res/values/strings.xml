@@ -18,7 +18,7 @@
     <!-- profile -->
     <string name="my_photoAlbum">My Posts</string>
     <string name="my_weibo">Weibo</string>
-    <string name="my_location">Location</string>
+    <string name="my_location">My Location</string>
     <string name="change_password">Modify Password</string>
     <string name="system_not">Notification</string>
     <string name="logout">Log out</string>
@@ -69,6 +69,5 @@
 
     <!-- Country -->
     <string name="china">China</string>
-
 
 </resources>

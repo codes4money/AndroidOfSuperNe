@@ -29,6 +29,8 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
     <uses-feature
@@ -114,10 +116,13 @@
         </activity>
         <activity android:name="com.donal.superne.app.ui.search.SearchByPhone" >
         </activity>
-        <activity
-            android:name="com.donal.superne.app.ui.search.PeopleNearBy"
-             >
+        <activity android:name="com.donal.superne.app.ui.search.PeopleNearBy" >
         </activity>
+        <activity
+            android:name="com.donal.superne.app.ui.search.MyLocation"
+            >
+        </activity>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="415943dea57718a4fab735ac76636a67" />
     </application>
 
 </manifest>

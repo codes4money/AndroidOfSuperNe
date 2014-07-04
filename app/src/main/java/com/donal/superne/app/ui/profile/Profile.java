@@ -14,6 +14,7 @@ import com.donal.superne.app.config.AppManager;
 import com.donal.superne.app.manager.XmppConnectionManager;
 import com.donal.superne.app.ui.Welcome;
 import com.donal.superne.app.ui.login.Login;
+import com.donal.superne.app.ui.search.MyLocation;
 import org.apache.http.client.CookieStore;
 
 public class Profile extends BaseActivity implements View.OnClickListener{
@@ -39,6 +40,7 @@ public class Profile extends BaseActivity implements View.OnClickListener{
             case R.id.btnWeibo:
                 break;
             case R.id.btnLocation:
+                startActivity(new Intent(this, MyLocation.class));
                 break;
             case R.id.btnModifyPassword:
                 break;
