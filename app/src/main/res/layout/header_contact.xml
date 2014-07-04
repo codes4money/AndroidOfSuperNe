@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:id="@+id/btnRecommend"
+            android:onClick="onClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+            >
+
+        <ImageView
+                android:id="@+id/imgRecommentd"
+                android:layout_marginTop="7dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_recommend"
+                />
+
+        <TextView
+                android:layout_alignTop="@+id/imgRecommentd"
+                android:layout_toRightOf="@+id/imgRecommentd"
+                android:id="@+id/tvName"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:text="@string/recommend_friend"
+                android:textSize="@dimen/layout_size_15" />
+
+
+
+        <View
+                android:layout_below="@+id/imgRecommentd"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="7dp"
+                android:background="#e4e4e4" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/btnGroups"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            >
+
+        <ImageView
+                android:layout_marginTop="7dp"
+                android:id="@+id/imgAvatar"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_groups"
+                />
+
+        <TextView
+                android:layout_alignTop="@+id/imgAvatar"
+                android:layout_toRightOf="@+id/imgAvatar"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:text="@string/groups"
+                android:textSize="@dimen/layout_size_15" />
+
+        <View
+                android:layout_below="@+id/imgAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="7dp"
+                android:background="#e4e4e4" />
+
+    </RelativeLayout>
+
+</LinearLayout>

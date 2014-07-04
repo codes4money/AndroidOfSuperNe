@@ -230,6 +230,19 @@ public class XmppConnectionManager {
         }
     }
 
+    /**
+     * 申请加好友
+     * @param user
+     * @param callback
+     * @throws SmackException.NotConnectedException
+     * @throws XMPPException.XMPPErrorException
+     * @throws SmackException.NoResponseException
+     */
+    public void requestAddingUser(User user, XMPPCallback callback) throws SmackException.NotConnectedException, XMPPException.XMPPErrorException, SmackException.NoResponseException, SmackException.NotLoggedInException{
+        Roster roster = xmpptcpConnection.getRoster();
+        roster.createEntry(user.getUsername(), null, new String[] { "friends" });
+    }
+
     public interface XMPPCallback {
         public void onSuccess(Object object);
         public void onFailure(Object object);

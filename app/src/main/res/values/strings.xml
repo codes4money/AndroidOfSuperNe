@@ -10,6 +10,9 @@
     <string name="discover">Discover</string>
     <string name="me">Me</string>
 
+    <!--contact-->
+    <string name="recommend_friend">Recommended Friends</string>
+    <string name="groups">Groups</string>
     <!-- discover -->
     <string name="moments">Moments</string>
     <string name="people_nearby">People NearBy</string>
@@ -23,7 +26,7 @@
     <string name="system_not">Notification</string>
     <string name="logout">Log out</string>
 
-    <!-- 登录页面 -->
+    <!-- login -->
     <string name="input_accountmobile">mobile</string>
     <string name="input_password">password</string>
     <string name="remember_password">remember</string>

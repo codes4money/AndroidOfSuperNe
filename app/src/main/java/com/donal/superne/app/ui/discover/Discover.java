@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
+import com.donal.superne.app.ui.search.PeopleNearBy;
 import com.donal.superne.app.ui.search.Search;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -49,6 +50,7 @@ public class Discover extends BaseActivity implements View.OnClickListener{
                 startActivity(new Intent(this, Search.class));
                 break;
             case R.id.btnNearBy:
+                startActivity(new Intent(this, PeopleNearBy.class));
                 break;
             case R.id.btnScan:
                 break;
