@@ -58,7 +58,7 @@ public class Contact extends BaseActivity implements View.OnClickListener {
             lvContact.setAdapter(contactAdapter);
         }
         catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
