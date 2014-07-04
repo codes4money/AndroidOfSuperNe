@@ -53,6 +53,7 @@ public class SearchByPhone extends BaseActivity implements View.OnClickListener 
                 AppManager.getAppManager().finishActivity(this);
                 break;
             case R.id.btnRight:
+                closeInput();
                 search(0);
                 break;
         }
@@ -70,6 +71,11 @@ public class SearchByPhone extends BaseActivity implements View.OnClickListener 
                 switch (msg.what) {
                     case 1:
                         List<User> users = (List<User>)msg.obj;
+                        if (users.isEmpty()) {
+                            dismissProgress(loadingPd);
+                            showDialog(getResources().getString(R.string.user_not_found));
+                            return;
+                        }
                         UserListEntity userListEntity = new UserListEntity();
                         userListEntity.setUsers(users);
                         startActivity(new Intent(SearchByPhone.this, SearchResult.class).putExtra(Constant.USERS, userListEntity));

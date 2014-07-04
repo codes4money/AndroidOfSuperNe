@@ -45,6 +45,7 @@
     <string name="search">Search</string>
     <string name="search_by_phone">Search By Phone</string>
     <string name="search_result">Result</string>
+    <string name="user_not_found">User not found</string>
 
     <!-- App exeception -->
     <string name="network_not_connected">network not connected</string>
