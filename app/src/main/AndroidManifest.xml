@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -110,16 +111,25 @@
             android:exported="true" >
         </service>
 
-        <activity android:name="com.donal.superne.app.ui.register.RegisterPass" >
+        <activity android:name="com.donal.superne.app.ui.register.RegisterPass"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.Search" >
+        <activity android:name="com.donal.superne.app.ui.search.Search"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.SearchByPhone" >
+        <activity android:name="com.donal.superne.app.ui.search.SearchByPhone"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.PeopleNearBy" >
+        <activity android:name="com.donal.superne.app.ui.search.PeopleNearBy"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.MyLocation" >
+        <activity android:name="com.donal.superne.app.ui.search.MyLocation"
+                  android:screenOrientation="portrait">
         </activity>
+        <activity android:name="com.donal.superne.app.ui.discover.CaptureActivity"
+                  android:screenOrientation="portrait">
+        </activity>
+
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

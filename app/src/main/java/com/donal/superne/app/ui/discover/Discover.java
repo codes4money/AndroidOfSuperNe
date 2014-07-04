@@ -53,6 +53,7 @@ public class Discover extends BaseActivity implements View.OnClickListener{
                 startActivity(new Intent(this, PeopleNearBy.class));
                 break;
             case R.id.btnScan:
+                startActivity(new Intent(this, CaptureActivity.class));
                 break;
         }
     }

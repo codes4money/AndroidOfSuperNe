@@ -17,6 +17,7 @@
     <string name="moments">Moments</string>
     <string name="people_nearby">People NearBy</string>
     <string name="scan_qr_code">Scan QR Code</string>
+    <string name="scan_tips">Align the QR Code within the frame to scan</string>
 
     <!-- profile -->
     <string name="my_photoAlbum">My Posts</string>
