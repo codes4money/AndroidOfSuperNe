@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="72.0dip"
+    android:layout_height="45.0dip"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44.0dip"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:id="@+id/tabLine"
+            android:background="@drawable/qvip_emoji_aio_face_tab_line"
+            android:layout_width="2.0px"
+            android:layout_height="43.5dip"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageView
+            android:id="@+id/tab_item_bg"
+            android:background="@drawable/emo_tabitem_sel"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/tabLine"/>
+
+        <ImageView
+            android:id="@+id/tabView"
+            android:layout_width="30.0dip"
+            android:layout_height="30.0dip"
+            android:scaleType="centerCrop"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
 import com.donal.superne.app.config.AppManager;
@@ -16,7 +17,8 @@ import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
-public class Register extends BaseActivity implements View.OnClickListener{
+public class Register extends BaseActivity implements View.OnClickListener
+{
 
     @ViewInject(R.id.edtAccount)
     private EditText edtAccount;
@@ -25,7 +27,8 @@ public class Register extends BaseActivity implements View.OnClickListener{
     private Button btnReg;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ViewUtils.inject(this);
@@ -33,15 +36,18 @@ public class Register extends BaseActivity implements View.OnClickListener{
     }
 
     @Override
-    protected void initNavgation() {
+    protected void initNavgation()
+    {
         super.initNavgation();
         setBtnLeft(this);
         btnReg.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
             case R.id.btnLeft:
                 AppManager.getAppManager().finishActivity(this);
                 break;
@@ -51,23 +57,29 @@ public class Register extends BaseActivity implements View.OnClickListener{
         }
     }
 
-    private void register() {
+    private void register()
+    {
         String account = edtAccount.getEditableText().toString();
-        if (StringUtils.empty(account)) {
+        if (StringUtils.empty(account))
+        {
             return;
         }
-        if (!StringUtils.isMobileNO(account)) {
+        if (!StringUtils.isMobileNO(account))
+        {
             return;
         }
         startActivityForResult(new Intent(this, RegisterPass.class).putExtra(Constant.MOBILE, account), Constant.REQUEST_REGISTERPASS);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (resultCode != RESULT_OK)
+        {
             return;
         }
-        switch (requestCode) {
+        switch (requestCode)
+        {
             case Constant.REQUEST_REGISTERPASS:
                 setResult(RESULT_OK);
                 AppManager.getAppManager().finishActivity(this);

@@ -31,7 +31,7 @@ public class OffineManager extends OfflineMessageManager
         this.mConnection = connection;
         packetFilter =
                 new AndFilter(new PacketExtensionFilter("offline", namespace),
-                              new PacketTypeFilter(Message.class));
+                        new PacketTypeFilter(Message.class));
     }
 
     @Override

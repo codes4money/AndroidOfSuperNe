@@ -32,6 +32,7 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
     <uses-feature
@@ -62,37 +63,37 @@
         android:xlargeScreens="true" />
 
     <application
-        android:name="com.donal.superne.app.BaseApplication"
+        android:name=".Superne"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="com.donal.superne.app.ui.tabbar.Tabbar"
+            android:name=".ui.tabbar.Tabbar"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.donal.superne.app.ui.conversation.Conversation"
+            android:name=".ui.conversation.Conversation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.donal.superne.app.ui.contact.Contact"
+            android:name=".ui.contact.Contact"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.donal.superne.app.ui.discover.Discover"
+            android:name=".ui.discover.Discover"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.donal.superne.app.ui.profile.Profile"
+            android:name=".ui.profile.Profile"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.donal.superne.app.ui.login.Login"
+            android:name=".ui.login.Login"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.donal.superne.app.ui.Welcome"
+            android:name=".ui.Welcome"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -101,43 +102,56 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.donal.superne.app.ui.register.Register"
+            android:name=".ui.register.Register"
             android:screenOrientation="portrait" >
         </activity>
 
         <service
-            android:name="com.donal.superne.app.service.ChatReceiveService"
+            android:name=".service.ChatReceiveService"
             android:enabled="true"
             android:exported="true" >
         </service>
 
-        <activity android:name="com.donal.superne.app.ui.register.RegisterPass"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.register.RegisterPass"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.Search"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.search.Search"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.SearchByPhone"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.search.SearchByPhone"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.PeopleNearBy"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.search.PeopleNearBy"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.donal.superne.app.ui.search.MyLocation"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.search.MyLocation"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.donal.superne.app.ui.discover.CaptureActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.discover.CaptureActivity"
+            android:screenOrientation="portrait" >
         </activity>
-
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="415943dea57718a4fab735ac76636a67" />
 
+        <activity android:name=".ui.search.SearchResult" >
+        </activity>
+
+        <service
+            android:name=".service.MessageCenterService"
+            android:exported="false" >
+        </service>
+
         <activity
-            android:name="com.donal.superne.app.ui.search.SearchResult"
-             >
+            android:name=".ui.chat.ChatActivity"
+            android:label="@string/title_activity_chat" >
         </activity>
     </application>
 

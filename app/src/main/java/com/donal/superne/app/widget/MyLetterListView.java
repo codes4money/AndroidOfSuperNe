@@ -11,104 +11,107 @@ import android.view.View;
 
 /**
  * A~Z侧边
- * @author Donal
  *
+ * @author Donal
  */
 public class MyLetterListView extends View
 {
 
-	OnTouchingLetterChangedListener onTouchingLetterChangedListener;
-	String[] b = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-	int choose = -1;
-	Paint paint = new Paint();
-	boolean showBkg = false;
+    OnTouchingLetterChangedListener onTouchingLetterChangedListener;
+    String[] b = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"};
+    int choose = -1;
+    Paint paint = new Paint();
+    boolean showBkg = false;
 
-	public MyLetterListView(Context context, AttributeSet attrs, int defStyle)
-	{
-		super(context, attrs, defStyle);
-	}
+    public MyLetterListView(Context context, AttributeSet attrs, int defStyle)
+    {
+        super(context, attrs, defStyle);
+    }
 
-	public MyLetterListView(Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-	}
+    public MyLetterListView(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+    }
 
-	public MyLetterListView(Context context)
-	{
-		super(context);
-	}
+    public MyLetterListView(Context context)
+    {
+        super(context);
+    }
 
-	@Override
-	protected void onDraw(Canvas canvas)
-	{
-		super.onDraw(canvas);
-		int height = getHeight();
-		int width = getWidth();
-		int singleHeight = height / b.length;
-		for (int i = 0; i < b.length; i++)
-		{
-			paint.setColor(Color.BLACK);
-			paint.setTextSize(25);
-			paint.setTypeface(Typeface.DEFAULT_BOLD);
-			paint.setAntiAlias(true);
-			float xPos = width / 2 - paint.measureText(b[i]) / 2;
-			float yPos = singleHeight * i + singleHeight;
-			canvas.drawText(b[i], xPos, yPos, paint);
-			paint.reset();
-		}
+    @Override
+    protected void onDraw(Canvas canvas)
+    {
+        super.onDraw(canvas);
+        int height = getHeight();
+        int width = getWidth();
+        int singleHeight = height / b.length;
+        for (int i = 0; i < b.length; i++)
+        {
+            paint.setColor(Color.BLACK);
+            paint.setTextSize(25);
+            paint.setTypeface(Typeface.DEFAULT_BOLD);
+            paint.setAntiAlias(true);
+            float xPos = width / 2 - paint.measureText(b[i]) / 2;
+            float yPos = singleHeight * i + singleHeight;
+            canvas.drawText(b[i], xPos, yPos, paint);
+            paint.reset();
+        }
 
-	}
+    }
 
-	@Override
-	public boolean dispatchTouchEvent(MotionEvent event)
-	{
-		final int action = event.getAction();
-		final float y = event.getY();
-		final int oldChoose = choose;
-		final OnTouchingLetterChangedListener listener = onTouchingLetterChangedListener;
-		final int c = (int) (y / getHeight() * b.length);
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event)
+    {
+        final int action = event.getAction();
+        final float y = event.getY();
+        final int oldChoose = choose;
+        final OnTouchingLetterChangedListener listener = onTouchingLetterChangedListener;
+        final int c = (int) (y / getHeight() * b.length);
 
-		switch (action) {
-		case MotionEvent.ACTION_DOWN:
-			if (oldChoose != c && listener != null)
-			{
-				if (c >= 0 && c < b.length)
-				{
-					listener.onTouchingLetterChanged(b[c]);
-				}
-			}
+        switch (action)
+        {
+            case MotionEvent.ACTION_DOWN:
+                if (oldChoose != c && listener != null)
+                {
+                    if (c >= 0 && c < b.length)
+                    {
+                        listener.onTouchingLetterChanged(b[c]);
+                    }
+                }
 
-			break;
-		case MotionEvent.ACTION_MOVE:
-			if (oldChoose != c && listener != null)
-			{
-				if (c >= 0 && c < b.length)
-				{
-					listener.onTouchingLetterChanged(b[c]);
-				}
-			}
-			break;
-		case MotionEvent.ACTION_UP:
-			listener.onTouchingUp();;
-			break;
-		}
-		return true;
-	}
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (oldChoose != c && listener != null)
+                {
+                    if (c >= 0 && c < b.length)
+                    {
+                        listener.onTouchingLetterChanged(b[c]);
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                listener.onTouchingUp();
+                ;
+                break;
+        }
+        return true;
+    }
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event)
-	{
-		return super.onTouchEvent(event);
-	}
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        return super.onTouchEvent(event);
+    }
 
-	public void setOnTouchingLetterChangedListener(OnTouchingLetterChangedListener onTouchingLetterChangedListener)
-	{
-		this.onTouchingLetterChangedListener = onTouchingLetterChangedListener;
-	}
+    public void setOnTouchingLetterChangedListener(OnTouchingLetterChangedListener onTouchingLetterChangedListener)
+    {
+        this.onTouchingLetterChangedListener = onTouchingLetterChangedListener;
+    }
 
-	public interface OnTouchingLetterChangedListener
-	{
-		public void onTouchingLetterChanged(String s);
-		public void onTouchingUp();
-	}
+    public interface OnTouchingLetterChangedListener
+    {
+        public void onTouchingLetterChanged(String s);
+
+        public void onTouchingUp();
+    }
 }

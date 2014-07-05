@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
 import com.donal.superne.app.ui.search.PeopleNearBy;
@@ -14,7 +15,8 @@ import com.donal.superne.app.ui.search.Search;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
-public class Discover extends BaseActivity implements View.OnClickListener{
+public class Discover extends BaseActivity implements View.OnClickListener
+{
 
     @ViewInject(R.id.btnMoments)
     private RelativeLayout btnMoments;
@@ -26,7 +28,8 @@ public class Discover extends BaseActivity implements View.OnClickListener{
     private RelativeLayout btnScan;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover);
         ViewUtils.inject(this);
@@ -35,7 +38,8 @@ public class Discover extends BaseActivity implements View.OnClickListener{
     }
 
     @Override
-    protected void initNavgation() {
+    protected void initNavgation()
+    {
         super.initNavgation();
         setNavTitle(R.string.discover);
         btnMoments.setOnClickListener(this);
@@ -44,8 +48,10 @@ public class Discover extends BaseActivity implements View.OnClickListener{
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
             case R.id.btnMoments:
                 startActivity(new Intent(this, Search.class));
                 break;

@@ -10,16 +10,16 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
+
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
-import com.donal.superne.app.manager.XmppConnectionManager;
-import com.donal.superne.app.service.NetworkStateService;
 import com.donal.superne.app.ui.contact.Contact;
 import com.donal.superne.app.ui.conversation.Conversation;
 import com.donal.superne.app.ui.discover.Discover;
 import com.donal.superne.app.ui.profile.Profile;
 
-public class Tabbar extends TabActivity {
+public class Tabbar extends TabActivity
+{
     private TabHost tabHost;
     private Intent intentConversation;
     private Intent intentContact;
@@ -36,40 +36,37 @@ public class Tabbar extends TabActivity {
     private RelativeLayout layout4;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbar);
-        startService(new Intent(this, NetworkStateService.class));
         prepareIntent();
         setupIntent();
         initUI();
     }
 
-    @Override
-    protected void onDestroy() {
-        stopService(new Intent(this, NetworkStateService.class));
-        super.onDestroy();
-    }
-
-    private void initUI() {
-        layout1 = (RelativeLayout)findViewById(R.id.radio_button1);
+    private void initUI()
+    {
+        layout1 = (RelativeLayout) findViewById(R.id.radio_button1);
         layout1.setSelected(true);
-        layout2 = (RelativeLayout)findViewById(R.id.radio_button2);
+        layout2 = (RelativeLayout) findViewById(R.id.radio_button2);
         layout2.setSelected(false);
-        layout3 = (RelativeLayout)findViewById(R.id.radio_button3);
+        layout3 = (RelativeLayout) findViewById(R.id.radio_button3);
         layout3.setSelected(false);
-        layout4 = (RelativeLayout)findViewById(R.id.radio_button4);
+        layout4 = (RelativeLayout) findViewById(R.id.radio_button4);
         layout4.setSelected(false);
     }
 
-    private void prepareIntent() {
+    private void prepareIntent()
+    {
         intentConversation = new Intent(this, Conversation.class);
         intentContact = new Intent(this, Contact.class);
         intentDiscover = new Intent(this, Discover.class);
         intentProfile = new Intent(this, Profile.class);
     }
 
-    private void setupIntent() {
+    private void setupIntent()
+    {
         tabHost = getTabHost();
         TabHost localTabHost = tabHost;
         localTabHost.addTab(buildTabSpec(TAB_TAG_CONVERSATION, R.string.conversation, R.drawable.tab_coversation, intentConversation));
@@ -80,19 +77,23 @@ public class Tabbar extends TabActivity {
 
     /**
      * 构建TabHost的Tab页
-     * @param tag 标记
+     *
+     * @param tag      标记
      * @param resLabel 标签
-     * @param resIcon 图标
-     * @param content 该tab展示的内容
+     * @param resIcon  图标
+     * @param content  该tab展示的内容
      * @return 一个tab
      */
-    private TabHost.TabSpec buildTabSpec(String tag, int resLabel, int resIcon,final Intent content) {
+    private TabHost.TabSpec buildTabSpec(String tag, int resLabel, int resIcon, final Intent content)
+    {
         return this.tabHost.newTabSpec(tag).setIndicator(getString(resLabel),
                 getResources().getDrawable(resIcon)).setContent(content);
     }
 
-    public void ButtonClick(View v) {
-        switch(v.getId()){
+    public void ButtonClick(View v)
+    {
+        switch (v.getId())
+        {
             case R.id.radio_button1:
                 layout1.setSelected(true);
                 layout2.setSelected(false);

@@ -7,25 +7,31 @@ import com.loopj.android.http.RequestParams;
 /**
  * Created by donal on 14-7-1.
  */
-public class RestClient {
+public class RestClient
+{
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
-    public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+    public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler)
+    {
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }
 
-    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler)
+    {
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
 
-    private static String getAbsoluteUrl(String relativeUrl) {
-        client.setTimeout(60*1000);
+    private static String getAbsoluteUrl(String relativeUrl)
+    {
+        client.setTimeout(60 * 1000);
         client.setMaxConnections(5);
-        if (relativeUrl.contains("http")) {
+        if (relativeUrl.contains("http"))
+        {
             return relativeUrl;
         }
-        else {
+        else
+        {
             return Constant.BASE_API + relativeUrl;
         }
     }

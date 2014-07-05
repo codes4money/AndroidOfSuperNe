@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.android.tools.build:gradle:0.12.+'
     }
 }
 apply plugin: 'android'
@@ -14,7 +14,7 @@ repositories {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.0.3'
+    buildToolsVersion '19.1.0'
 
     defaultConfig {
         minSdkVersion 8
@@ -35,14 +35,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.2'
     compile 'com.loopj.android:android-async-http:1.4.5'
-}
-
-task copyNativeLibs(type: Copy) {
-    from fileTree(dir: 'libs', include: '**/*.so') into 'build/native-libs'
-}
-tasks.withType(Compile) { compileTask -> compileTask.dependsOn copyNativeLibs }
-clean.dependsOn 'cleanCopyNativeLibs'
-tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
-    pkgTask.jniFolders = new HashSet<File>()
-    pkgTask.jniFolders.add(new File(buildDir, 'native-libs'))
 }

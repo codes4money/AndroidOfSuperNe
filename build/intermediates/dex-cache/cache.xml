@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/xUtils-2.6.7-92374dcfa55b6482db7d63308256c99a1bd49707.jar"
+        jar="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/libs/xUtils-2.6.7.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="c42ff65f4c9401024b06ea93b44ee3b30d0e38b4"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/BaiduLBS_Android-b94b3a0b38ece1a5623006817a941ff49bd13084.jar"
+        jar="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/libs/BaiduLBS_Android.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="5d5df0269ea62a8b66946c0c88402772986feff2"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-15d96d69c18459a870db901d0943047b8de6ab30.jar"
+        jar="/Volumes/Work/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/gson-2.2.4-a97a6008d39f1dff9df1616402e7fd1b708f3c0f.jar"
+        jar="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/dom4j-a0114777231fb492ebc89b388322a8dab40add73.jar"
+        jar="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/libs/dom4j.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="0ea7d5f5d4c88d69e73a7e5fec1a3942649d510d"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/classes-cf06aa0f67be229fde49f62366f0668f31f181be.jar"
+        jar="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/dnsjava-2.1.3-2aa905d14fe6c3f4637e7d3a686b23cce8f40977.jar"
+        jar="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/libs/dnsjava-2.1.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="8223d307302c98bd106c8a441491fc2a6d0c0296"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.2-5c87b66bd3c6ff0229146be3c1190f7b65d4c0fb.jar"
+        jar="/Users/jianghaofeng/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.9.2/9e025bc5b84968e7d6ac765e660a70b3e5a87432/universal-image-loader-1.9.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="9e025bc5b84968e7d6ac765e660a70b3e5a87432"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/asmack-cb0e1901e9d98eba7754e2ac7161fcda0aa08bb9.jar"
+        jar="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/libs/asmack.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="ca2e38a7c27e8db8deca05535c13c506fdf3d9b9"/>
+    <item
+        dex="/Users/jianghaofeng/AndroidStudioProjects/AndroidOfSuperNe/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-0dcd9d24422acc47c717ad1ceeac048765cc9424.jar"
+        jar="/Users/jianghaofeng/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881"/>
+
+</pre-dex-items>

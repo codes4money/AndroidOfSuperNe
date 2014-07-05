@@ -10,7 +10,7 @@
     <string name="discover">Discover</string>
     <string name="me">Me</string>
 
-    <!--contact-->
+    <!-- contact -->
     <string name="recommend_friend">Recommended Friends</string>
     <string name="groups">Groups</string>
     <!-- discover -->
@@ -75,6 +75,6 @@
 
     <!-- Country -->
     <string name="china">China</string>
-
+    <string name="title_activity_chat">聊天</string>
 
 </resources>

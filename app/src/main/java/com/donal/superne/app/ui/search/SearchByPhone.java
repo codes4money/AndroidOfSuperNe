@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
+
 import com.donal.superne.app.BaseActivity;
 import com.donal.superne.app.R;
 import com.donal.superne.app.bean.UserListEntity;
@@ -16,19 +17,22 @@ import com.donal.superne.app.utils.StringUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+
 import org.jivesoftware.smackx.superne.User;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SearchByPhone extends BaseActivity implements View.OnClickListener {
+public class SearchByPhone extends BaseActivity implements View.OnClickListener
+{
 
     @ViewInject(R.id.edtPhone)
     private EditText edtPhone;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_by_phone);
         ViewUtils.inject(this);
@@ -36,7 +40,8 @@ public class SearchByPhone extends BaseActivity implements View.OnClickListener 
     }
 
     @Override
-    protected void initNavgation() {
+    protected void initNavgation()
+    {
         super.initNavgation();
         setNavTitle(R.string.search_by_phone);
         setBtnLeft(this);
@@ -47,8 +52,10 @@ public class SearchByPhone extends BaseActivity implements View.OnClickListener 
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
             case R.id.btnLeft:
                 AppManager.getAppManager().finishActivity(this);
                 break;
@@ -59,19 +66,25 @@ public class SearchByPhone extends BaseActivity implements View.OnClickListener 
         }
     }
 
-    private void search(final int page) {
+    private void search(final int page)
+    {
         final String phone = edtPhone.getEditableText().toString();
-        if (StringUtils.empty(StringUtils.doEmpty(phone))) {
+        if (StringUtils.empty(StringUtils.doEmpty(phone)))
+        {
             return;
         }
         loadingPd = showProgress(this, null, null, true);
-        final Handler handler = new Handler(){
+        final Handler handler = new Handler()
+        {
             @Override
-            public void handleMessage(Message msg) {
-                switch (msg.what) {
+            public void handleMessage(Message msg)
+            {
+                switch (msg.what)
+                {
                     case 1:
-                        List<User> users = (List<User>)msg.obj;
-                        if (users.isEmpty()) {
+                        List<User> users = (List<User>) msg.obj;
+                        if (users.isEmpty())
+                        {
                             dismissProgress(loadingPd);
                             showDialog(getResources().getString(R.string.user_not_found));
                             return;
@@ -90,29 +103,36 @@ public class SearchByPhone extends BaseActivity implements View.OnClickListener 
             }
         };
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
-        singleThreadExecutor.execute(new Runnable() {
+        singleThreadExecutor.execute(new Runnable()
+        {
             @Override
-            public void run() {
-                final Message msg = new Message();
-                try {
-                    XmppConnectionManager.getInstance().searchByUsername(phone, page, new XmppConnectionManager.XMPPCallback(){
-                        @Override
-                        public void onSuccess(Object object) {
-                            msg.what = 1;
-                            msg.obj = object;
-                        }
-
-                        @Override
-                        public void onFailure(Object message) {
-                            msg.what = 0;
-                            msg.obj = message;
-                        }
-                    });
-                }
-                catch (Exception e) {
-                    msg.what = -1;
-                }
-                handler.sendMessage(msg);
+            public void run()
+            {
+//                final Message msg = new Message();
+//                try
+//                {
+//                    XmppConnectionManager.getInstance().searchByUsername(phone, page, new XmppConnectionManager.XMPPCallback()
+//                    {
+//                        @Override
+//                        public void onSuccess(Object object)
+//                        {
+//                            msg.what = 1;
+//                            msg.obj = object;
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Object message)
+//                        {
+//                            msg.what = 0;
+//                            msg.obj = message;
+//                        }
+//                    });
+//                }
+//                catch (Exception e)
+//                {
+//                    msg.what = -1;
+//                }
+//                handler.sendMessage(msg);
             }
         });
 
