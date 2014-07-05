@@ -51,7 +51,7 @@ public class Contact extends BaseActivity implements View.OnClickListener {
         View header = LayoutInflater.from(this).inflate(R.layout.header_contact, null);
         lvContact.addHeaderView(header);
         try {
-            Selector selector = Selector.from(User.class).orderBy("username");
+            Selector selector = Selector.from(User.class).orderBy("_id");
             Cursor cursor = DatabaseManager.getInstance().getDB().execQuery(selector.toString());
             cursor.setNotificationUri(context.getContentResolver(), Constant.USER_URI);
             contactAdapter = new ContactAdapter(this, cursor, true);

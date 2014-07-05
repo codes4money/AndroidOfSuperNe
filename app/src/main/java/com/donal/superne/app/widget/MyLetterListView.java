@@ -47,7 +47,7 @@ public class MyLetterListView extends View
 		int singleHeight = height / b.length;
 		for (int i = 0; i < b.length; i++)
 		{
-			paint.setColor(Color.WHITE);
+			paint.setColor(Color.BLACK);
 			paint.setTextSize(25);
 			paint.setTypeface(Typeface.DEFAULT_BOLD);
 			paint.setAntiAlias(true);
